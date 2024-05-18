@@ -5,6 +5,7 @@
 import unittest
 import models
 from models.city import City
+from datetime import datetime
 
 
 class TestCity_instantiation(unittest.TestCase):
@@ -14,7 +15,7 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(City, type(City()))
 
     def test_new_inst_in_objs(self):
-        self.assertEqual(City(), models.storage.all().values())
+        self.assertIn(City(), models.storage.all().values())
 
     def test_id_public_str(self):
         self.assertEqual(str, type(City().id))

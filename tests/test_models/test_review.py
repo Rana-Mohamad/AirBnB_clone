@@ -45,7 +45,7 @@ class TestReview_instantiation(unittest.TestCase):
 
         self.assertEqual(str, type(Review.text))
         self.assertIn("text", dir(review))
-        self.assertNotIn("text", reveiw.__dict__)
+        self.assertNotIn("text", review.__dict__)
 
     def test_two_reviews_unique_ids(self):
         review1 = Review()

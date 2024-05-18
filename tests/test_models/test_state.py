@@ -8,7 +8,7 @@ from datetime import datetime
 from models.state import State
 
 
-class TestState instantiation(unittest.TestCase):
+class TestState_instantiation(unittest.TestCase):
     ''' Unittest for state instantiation. '''
 
     def test_no_arg(self):
