@@ -9,6 +9,7 @@ import os
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 class TestFileStorage_inst(unittest.TestCase):
     ''' Unittest for FileStorage instantiation. '''
 
@@ -37,7 +38,8 @@ class TestFileStorage_methods(unittest.TestCase):
         base_model = BaseModel()
         models.storage.new(base_model)
 
-        self.assertIn("BaseModel." + base_model.id, models.storage.all().keys())
+        self.assertIn("BaseModel." + base_model.id,
+                      models.storage.all().keys())
         self.assertIn(base_model, models.storage.all().values())
 
     def test_new_None(self):
