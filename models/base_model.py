@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' BaseModel class. '''
 
+
 from datetime import datetime
 import uuid
 import models
@@ -10,7 +11,13 @@ class BaseModel:
     ''' BaseModel class. '''
 
     def __init__(self, *args, **kwargs):
-        ''' Constructor. '''
+        ''' Constructor.
+        
+        Args:
+            id: unique id for each BaseModel.
+            created_at: the current datetime when an instance is created.
+            updated_at: updated every time you change your object.
+        '''
 
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
 
