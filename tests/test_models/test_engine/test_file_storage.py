@@ -100,6 +100,25 @@ class TestFileStorage_methods(unittest.TestCase):
         with self.assertRaises(TypeError):
             models.storage.reload(None)
 
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp.json")
+        except FileNotFoundError:
+            pass
+
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+
+        try:
+            os.rename("tmp.json", "file.json")
+        except FileNotFoundError:
+            pass
+
+        FileStorage._FileStorage__objects = {}
+
 
 if __name__ == "__main__":
     unittest.main()
