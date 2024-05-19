@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     valid_classes = ["BaseModel", "User", "Place", "State",
-                    "City", "Amenity", "Review"]
+                     "City", "Amenity", "Review"]
 
     def do_quit(self, arg):
         '''Quit command to exit the program'''
@@ -174,9 +174,9 @@ class HBNBCommand(cmd.Cmd):
 
             else:
                 obj = objs[key]
-                crl_braces = re.search("\{(.*?)\}", arg)
+                crl_braces = re.search("{{(.*?)}}", arg)
 
-                if crl_braces:
+                if (crl_braces):
                     try:
                         str_data = crl_braces.group(1)
                         arg_dict = ast.literal_eval("{" + str_data + "}")
@@ -190,13 +190,16 @@ class HBNBCommand(cmd.Cmd):
                             setattr(obj, attr_name1, attr_value1)
                         except Exception:
                             pass
-                        
+
                         try:
                             attr_name2 = attr_names[1]
                             attr_value2 = attr_values[1]
                             setattr(obj, attr_name2, attr_value2)
                         except Exception:
                             pass
+                    except Exception:
+                        pass
+
                 else:
                     attr_name = commands[2]
                     attr_value = commands[3]
