@@ -7,6 +7,7 @@ import models
 from models.place import Place
 from datetime import datetime
 
+
 class TestPlace_instantiation(unittest.TestCase):
     ''' Unittest for Place instantiation. '''
 
