@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' BaseModel class. '''
+''' BaseModel Module. '''
 
 
 from datetime import datetime
