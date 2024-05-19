@@ -4,7 +4,6 @@
 
 import unittest
 from models.base_model import BaseModel
-import os
 
 
 class TestBasemodel(unittest.TestCase):
@@ -53,27 +52,6 @@ class TestBasemodel(unittest.TestCase):
         self.assertTrue(str(model).startswith('[BaseModel]'))
         self.assertIn(model.id, str(model))
         self.assertIn(str(model.__dict__), str(model))
-
-    def setUp(self):
-        ''' Setup for temp file path. '''
-
-        try:
-            os.rename("file.json", "tmp.json")
-        except FileNotFoundError:
-            pass
-
-    def tearDown(self):
-        ''' Tear down for temp file path. '''
-
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
-
-        try:
-            os.rename("tmp.json", "file.json")
-        except FileNotFoundError:
-            pass
 
 
 if __name__ == "__main__":
