@@ -12,6 +12,8 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+import re
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -172,6 +174,41 @@ class HBNBCommand(cmd.Cmd):
 
             else:
                 obj = objs[key]
+                crl_braces = re.search("\{(.*?)\}", arg)
+
+                if crl_braces:
+                    try:
+                        str_data = crl_braces.group(1)
+                        arg_dict = ast.literal_eval("{" + str_data + "}")
+
+                        attr_names = list(arg_dict.keys())
+                        attr_values = list(arg_dict.values())
+
+                        try:
+                            attr_name1 = attr_names[0]
+                            attr_value1 = attr_values[0]
+                            setattr(obj, attr_name1, attr_value1)
+                        except Exception:
+                            pass
+                        
+                        try:
+                            attr_name2 = attr_names[1]
+                            attr_value2 = attr_values[1]
+                            setattr(obj, attr_name2, attr_value2)
+                        except Exception:
+                            pass
+                else:
+                    attr_name = commands[2]
+                    attr_value = commands[3]
+
+                    try:
+                        attr_value = eval(att_value)
+                    except Exception:
+                        pass
+
+                    setattr(obj, attr_name, attr_value)
+
+                obj.save()
 
 
 if __name__ == "__main__":
