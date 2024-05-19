@@ -47,9 +47,9 @@ class FileStorage:
         otherwise, do nothing. If the file doesn’t exist,
         no exception should be raised)
         '''
-        
+
         if os.path.isfile(FileStorage.__file_path):
-            with open (FileStorage.__file_path, "r", encoding="utf-8") as file:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
                 try:
                     obj_dict = json.load(file)
 
@@ -59,6 +59,6 @@ class FileStorage:
                         instance = cls(**value)
 
                         FileStorage.__objects[key] = instance
-                
+
                 except Exception:
                     pass
