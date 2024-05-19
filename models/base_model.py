@@ -12,7 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         ''' Constructor.
-        
+
         Args:
             id: unique id for each BaseModel.
             created_at: the current datetime when an instance is created.
@@ -22,8 +22,8 @@ class BaseModel:
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
 
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
         if kwargs:
             for key, value in kwargs.items():
@@ -39,7 +39,7 @@ class BaseModel:
     def save(self):
         ''' Updates the public instance attribute updated_at. '''
 
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.utcnow()
         models.storage.save()
 
     def to_dict(self):
